@@ -1,0 +1,7 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.jumbotron {
+    background-image: url('./assets/img/banner.jpeg');
+    background-size: cover;
+    min-height: 380px;
+}
