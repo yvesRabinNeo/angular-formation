@@ -1,0 +1,35 @@
+<form #myForm="ngForm" (ngSubmit)="savePerson()">
+    <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input class="form-control" type="text" name="nom" [(ngModel)]="personne.nom" required #nom="ngModel">
+    </div>
+    <div [hidden]="nom.valid || nom.pristine" style="color:red">
+        Le nom est obligatoire
+    </div>
+    <div class="form-group">
+        <label for="prenom">Prenom:</label>
+        <input class="form-control" type="text" name="prenom" [(ngModel)]="personne.prenom" required #prenom="ngModel">    
+    </div>
+    <div [hidden]="prenom.valid || prenom.pristine" style="color:red">
+        Le prenom est obligatoire
+    </div>
+    <div >
+        <button class="btn btn-success" [disabled]= !myForm.valid>
+            Ajouter
+        </button>
+    </div>
+</form>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let personne of personnes; index as indice">
+        {{ indice + 1 }}. {{ personne.nom }} {{ personne.prenom }}
+        <button class="btn btn-success" (click)="personDetail(personne.id)">
+            Select
+        </button>
+        <button class="btn btn-danger" (click)="deletePerson(personne.id)">
+            Supprimer
+        </button>
+        <button class="btn btn-warning" (click)="updatePerson(personne.id)">
+            Mettre à jour
+        </button>
+    </li>
+</ul>
